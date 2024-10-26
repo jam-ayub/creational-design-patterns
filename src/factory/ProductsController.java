@@ -12,6 +12,6 @@ public class ProductsController extends Controller {
         // get products from database
         Map<String, Objects> context = new HashMap<>();
         // context.put(products)
-        render("product.html", context, new MatchaViewEngine());
+        render("product.html", context);
     }
 }
