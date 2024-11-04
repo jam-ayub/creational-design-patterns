@@ -1,12 +1,18 @@
-import abstractfactory.ant.AntWidgetFactory;
-import abstractfactory.app.ContextForm;
-import abstractfactory.material.MaterialWidgetFactory;
-import factory.ProductsController;
-import singleton.ConfigManager;
+import builder.Movie;
+import builder.Presentations;
+import builder.Slide;
+import builder.patternstructure.MovieBuilder;
+import builder.patternstructure.PDFDocumentBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        new ContextForm().render(new MaterialWidgetFactory());
-        new ContextForm().render(new AntWidgetFactory());
+        var presentation = new Presentations();
+        presentation.addSlide(new Slide("Slide 1"));
+        presentation.addSlide(new Slide("Slide 2"));
+        presentation.addSlide(new Slide("Slide 3"));
+
+        var builder = new MovieBuilder();
+        presentation.export(builder);
+        var movie = builder.getMovie();
     }
 }
